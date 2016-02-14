@@ -36,8 +36,8 @@
 
                     </div>
                     <div class='col-xs-5 col-sm-5'>
-                        <h3 id='price'></h3>
-                        <h3 id='chg'></h3>
+                        <h3 id='price' class='currencySymbol'></h3>
+                        <h3 id='chg' class='currencySymbol'></h3>
                         <!-- <h3 id='YoYchg'>YoY Chng</h3> -->
                     </div>
                     <hr>
@@ -69,15 +69,15 @@
                               </tr>
                               <tr>
                                 <td id='metric2' class='5metrics'><h3>Dividends?</h3></td>
-                                <td><h3 id='dps'></h3></td>
+                                <td><h3 id='dps' class='currencySymbol'></h3></td>
                               </tr>
                               <tr>
                                 <td id='metric3' class='5metrics'><h3>Price Target?</h3></td>
-                                <td><h3 class='priceTarget'></h3></td>
+                                <td><h3 class='priceTarget currencySymbol'></h3></td>
                               </tr>
                               <tr>
                                 <td id='metric4' class='5metrics'><h3>Profitability?</h3></td>
-                                <td><h3 id='eps'></h3></td>
+                                <td><h3 id='eps' class='currencySymbol'></h3></td>
                               </tr>
                               <tr>
                                 <td id='metric5' class='5metrics'><h3>Value?</h3></td>
@@ -95,10 +95,10 @@
             <div class='col-md-6'>
                 <div id='intermediateInvestor' class='panel panel-default col-xs-12 col-sm-12 col-md-6'>
                         <h4>Performance Metrics:</h4>
-                        <h5>Market Cap: <div class='pull-right' id='marketcap'></div></h5>
-                        <h5>52 Week High: <div class='pull-right' id='52high'></div></h5>
-                        <h5>52 Week Low: <div class='pull-right' id='52low'></div></h5>
-                        <h5>Price Target: <div class='pull-right priceTarget'></div></h5>
+                        <h5>Market Cap: <div class='pull-right currencySymbol' id='marketcap'></div></h5>
+                        <h5>52 Week High: <div class='pull-right currencySymbol' id='52high'></div></h5>
+                        <h5>52 Week Low: <div class='pull-right currencySymbol' id='52low'></div></h5>
+                        <h5>Price Target: <div class='pull-right priceTarget currencySymbol'></div></h5>
                         <h5>Financial Analysis:</h5>
                         <h6 id='analysis'></h6>
                 </div>

@@ -1,12 +1,33 @@
 
 
+function currency_formatting(currency_code) {
+
+
+		var currency_symbols = {
+		    'usd': '$', // US Dollar
+		    'eur': '€', // Euro
+		    'gbp': '£', // British Pound Sterling
+		    'inr': '₹', // Indian Rupee
+		    'jpy': '¥', // Japanese Yen
+		    'krw': '₩', // South Korean Won
+		    'ngn': '₦', // Nigerian Naira
+		    'php': '₱', // Philippine Peso
+		    'thb': '฿', // Thai Baht
+		    'vnd': '₫', // Vietnamese Dong
+		};
+
+	if (currency_symbols[currency_code]!==undefined) {
+	    var symbol = (currency_symbols[currency_code]);
+	    $('.currencySymbol').prepend(symbol);
+	}
+}
+
 
 function getData() {
 
 	var tickerParam = location.search.split('ticker=')[1];
 
-	// console.log('HERE IS THE TICKER');
-	// console.log(myParam);
+
 
 	$.ajax({
 	    url: 'https://dozlacmd51.execute-api.us-east-1.amazonaws.com/v1/search/filter',
@@ -15,6 +36,7 @@ function getData() {
 	    success: function(result) {
 	        console.log(result)
 	        var data = result[0];
+
 
 	        // Header Info
 	        var name = data.short_name;
@@ -88,11 +110,9 @@ function getData() {
 	        var peRatio = data.pe_ratio;
 
 	       	var reccomendation = data.reccomendation_text;
-	        $('#dps').text(dps);
-	        $('#eps').text(eps);
+	        $('#dps').text(dps + ' per share');
+	        $('#eps').text(eps + ' per share');
 	       	$('#peRatio').text(peRatio);
-
-	        $('#peRatio').text(peRatio);
 
 
 	        // Key Performance Metrics
@@ -108,6 +128,7 @@ function getData() {
 	       	$('#marketcap').text(marketcap);
 	       	$('#analysis').text(summary);
 	        $('.priceTarget').text(priceTargetFull);
+
 
 
 			$.ajax({
@@ -134,11 +155,16 @@ function getData() {
 				       		$('#chg').css('color', 'red');
 				       	}
 	        		}
-
 	        });
+
+	       	currency_formatting(data.currency_code);
+
+
 	    }
 	});
 }
+
+
 
 
 
