@@ -1,0 +1,23 @@
+{
+  "name": "stockflare",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "monaghan.darragh@gmail.com <monaghan.darragh@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.0",
+    "underscore": "^1.8.3"
+  }
+}
