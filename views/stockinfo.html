@@ -28,86 +28,80 @@
         <div class='row'>
 
             <!-- Stock Intro Div -->
-            <div class='col-md-6'>
+            <div class='col-md-12'>
                 <div id='header' class='panel panel-default col-xs-12 col-sm-12 col-md-12'>
                     <div class='col-xs-7 col-sm-7'>
-                        <h2 class='name'></h2>
-                        <h3 id='ticker'></h3>
-
+                        <h3 class='info name'></h3>
+                        <h3 id='ticker' class='info'></h3>
                     </div>
                     <div class='col-xs-5 col-sm-5'>
-                        <h3 id='price' class='currencySymbol'></h3>
+                        <h3 id='price' class='info currencySymbol'></h3>
                         <h3 id='chg' class='currencySymbol'></h3>
-                        <!-- <h3 id='YoYchg'>YoY Chng</h3> -->
-                    </div>
-                    <hr>
-                    <div class='col-xs-12 col-sm-12'>
-                        <!-- <h5 id='description'></h5> -->
-                        <h5><a id='readMore'>Read More</a></h5>
                     </div>
                 </div>
             </div>
 
+        </div>  <!-- ROW -->
+
+        <div class='row'>
 
             <!-- 5 Metrics Div -->
             <div class='col-md-6'>
                 <div id='5metrics' class='panel panel-default col-xs-12 col-sm-12 col-md-12'> 
-<!--                     <div class='col-xs-5 col-sm-5'>
-                        <div id='metric1'class='5metrics'><h3 id='growing'>Growing?</h3></div>
-                        <div id='metric2'class='5metrics'><h3 id='dividends'>Dividends?</h3></div>
-                        <div id='metric3'class='5metrics'><h3 id='reccomendation'>Price Target</h3></div>
-                        <div id='metric4'class='5metrics'><h3 id='profitable'>Profitability?</h3></div>
-                        <div id='metric5'class='5metrics'><h3 id='cheaper'>PE Ratio</h3></div>
-                    </div> -->
-
-                        <br>
-                        <div class='col-xs-12 col-sm-10'>
-                            <table class='table'>
-                              <tr>
-                                <td id='metric1' class='5metrics'><h3>Growth?</h3></td>
-                                <td><h3 id='growth'></h3></td>
-                              </tr>
-                              <tr>
-                                <td id='metric2' class='5metrics'><h3>Dividends?</h3></td>
-                                <td><h3 id='dps' class='currencySymbol'></h3></td>
-                              </tr>
-                              <tr>
-                                <td id='metric3' class='5metrics'><h3>Price Target?</h3></td>
-                                <td><h3 class='priceTarget currencySymbol'></h3></td>
-                              </tr>
-                              <tr>
-                                <td id='metric4' class='5metrics'><h3>Profitability?</h3></td>
-                                <td><h3 id='eps' class='currencySymbol'></h3></td>
-                              </tr>
-                              <tr>
-                                <td id='metric5' class='5metrics'><h3>Value?</h3></td>
-                                <td><h3 id='peRatio'></h3></td>
-                              </tr>
-                            </table>
+                        <div class='col-xs-12 col-sm-12'>
+                        <h4 class='divHeader'>Stockflare Metrics:</h4>
+                            <div class='panel panel-default'>
+                                <table class='table'>
+                                  <tr>
+                                    <td id='metric1' class='5metrics'><h5 class='text-center'>Growth?</h5></td>
+                                    <td><h5 id='info growth'></h5></td>
+                                  </tr>
+                                  <tr>
+                                    <td id='metric2' class='5metrics'><h5 class='text-center'>Dividends?</h5></td>
+                                    <td><h5 id='dps' class='info currencySymbol'></h3></td>
+                                  </tr>
+                                  <tr>
+                                    <td id='metric3' class='5metrics'><h5 class='text-center'>Price Target?</h5></td>
+                                    <td><h5 class='info priceTarget currencySymbol'></h5></td>
+                                  </tr>
+                                  <tr>
+                                    <td id='metric4' class='5metrics'><h5 class='text-center'>Profitability?</h5></td>
+                                    <td><h5 id='eps' class='info currencySymbol'></h5></td>
+                                  </tr>
+                                  <tr>
+                                    <td id='metric5' class='5metrics'><h5 class='text-center'>Value?</h5></td>
+                                    <td><h5 id='peRatio' class='info'></h5></td>
+                                  </tr>
+                                </table>
+                            </div>
                         </div>
-
                 </div>
             </div>
+
+
+            <div class='col-md-6'>
+                <div id='intermediateInvestor' class='panel panel-default col-xs-12 col-sm-12 col-md-12'>
+                    <div class='col-xs-12 col-sm-12'>
+                        <h4 class='divHeader'>Performance Metrics:</h4>
+                        <h5 class='info'>Market Cap: <div class='info pull-right currencySymbol' id='marketcap'></div></h5>
+                        <h5 class='info'>52 Week High: <div class='info pull-right currencySymbol' id='52high'></div></h5>
+                        <h5 class='info'>52 Week Low: <div class='info pull-right currencySymbol' id='52low'></div></h5>
+                        <h5 class='info'>Price Target: <div class='info pull-right priceTarget currencySymbol'></div></h5>
+                        <hr>
+                        <h5 class='info'>Financial Analysis:</h5>
+                        <h6 id='analysis' class='info'></h6>
+                    </div>
+                </div>
+            </div>
+    
         </div>
-
-
         <div class='row'>
-            <div class='col-md-6'>
-                <div id='intermediateInvestor' class='panel panel-default col-xs-12 col-sm-12 col-md-6'>
-                        <h4>Performance Metrics:</h4>
-                        <h5>Market Cap: <div class='pull-right currencySymbol' id='marketcap'></div></h5>
-                        <h5>52 Week High: <div class='pull-right currencySymbol' id='52high'></div></h5>
-                        <h5>52 Week Low: <div class='pull-right currencySymbol' id='52low'></div></h5>
-                        <h5>Price Target: <div class='pull-right priceTarget currencySymbol'></div></h5>
-                        <h5>Financial Analysis:</h5>
-                        <h6 id='analysis'></h6>
-                </div>
-            </div>
-
 
             <div class='col-md-6'>
-                <div id='advancedMetrics' class='panel panel-default col-xs-12 col-sm-12 col-md-6'>
-                        <h4>Advanced Metrics:</h4>
+                <div id='advancedMetrics' class='panel panel-default col-xs-12 col-sm-12 col-md-12'>
+                    <div class='col-xs-12 col-sm-12'>
+                        <h4 class='divHeader'>Advanced Metrics:</h4>
+                    </div>
                 </div>
             </div>
 

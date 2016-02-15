@@ -27,8 +27,6 @@ function getData() {
 
 	var tickerParam = location.search.split('ticker=')[1];
 
-
-
 	$.ajax({
 	    url: 'https://dozlacmd51.execute-api.us-east-1.amazonaws.com/v1/search/filter',
 	    type: 'PUT',
@@ -47,7 +45,7 @@ function getData() {
 	       	var sic = data.sic;
 
 	        $('.name').text(name);
-	        $('#ticker').text(ticker);
+	        $('#ticker').text('Ticker: ' + ticker);
 	        $('#price').text(price);
 	        $("#readMore").attr('href', webpage);
 	        $('#description').text(description);
@@ -60,45 +58,47 @@ function getData() {
 	       	var cheaper = data.cheaper;
 	       	var priceTarget = data.target_price;
 
+	       	var positiveColor = 'rgba(9, 187, 0, 1)';
+	       	var negativeColor = 'rgba(250, 0, 24, 1)';
 
 	       	if (dividends === true) {
-	       		$('#metric2').css('background-color', 'green');
+	       		$('#metric2').css('background-color', positiveColor);
 	       		$('#metric2').css('color', 'white');
 	       	} else {
 	       		$('#metric2').css('background-color', 'red');
-	       		$('#metric2').css('color', 'black');
+	       		$('#metric2').css('color', 'white');
 	       	}
 
 	       	if (growing === true) {
-	       		$('#metric1').css('background-color', 'green');
+	       		$('#metric1').css('background-color', positiveColor);
 	       		$('#metric1').css('color', 'white');
 	       	} else {
 	       		$('#metric1').css('background-color', 'red');
-	       		$('#metric1').css('color', 'black');
+	       		$('#metric1').css('color', 'white');
 	       	}
 
 	       	if (profitable === true) {
-	       		$('#metric4').css('background-color', 'green');
+	       		$('#metric4').css('background-color', positiveColor);
 	       		$('#metric4').css('color', 'white');
 	       	} else {
 	       		$('#metric4').css('background-color', 'red');
-	       		$('#metric4').css('color', 'black');
+	       		$('#metric4').css('color', 'white');
 	       	}
 
 	       	if (cheaper === true) {
-	       		$('#metric5').css('background-color', 'green');
+	       		$('#metric5').css('background-color', positiveColor);
 	       		$('#metric5').css('color', 'white');
 	       	} else {
 	       		$('#metric5').css('background-color', 'red');
-	       		$('#metric5').css('color', 'black');
+	       		$('#metric5').css('color', 'white');
 	       	}
 
 	       	if (priceTarget > price) {
-	       		$('#metric3').css('background-color', 'green');
+	       		$('#metric3').css('background-color', positiveColor);
 	       		$('#metric3').css('color', 'white');
 	       	} else {
 	       		$('#metric3').css('background-color', 'red');
-	       		$('#metric3').css('color', 'black');
+	       		$('#metric3').css('color', 'white');
 	       	}
 
 
@@ -108,11 +108,12 @@ function getData() {
 	        var dps = data.dps;
 	        var eps = data.eps;
 	        var peRatio = data.pe_ratio;
-
 	       	var reccomendation = data.reccomendation_text;
-	        $('#dps').text(dps + ' per share');
+	       	var div_yield = ((dps / price) * 100);
+
+	        $('#dps').text(dps + ' dividend paid per share ' + '(' + div_yield + '% yield)');
 	        $('#eps').text(eps + ' per share');
-	       	$('#peRatio').text(peRatio);
+	       	$('#peRatio').text('Current PE Ratio of ' + peRatio);
 
 
 	        // Key Performance Metrics
@@ -127,9 +128,7 @@ function getData() {
 	       	$('#52low').text(fiftytwo_low);
 	       	$('#marketcap').text(marketcap);
 	       	$('#analysis').text(summary);
-	        $('.priceTarget').text(priceTargetFull);
-
-
+	        
 
 			$.ajax({
 				    url: 'https://dozlacmd51.execute-api.us-east-1.amazonaws.com/v1/historical',
@@ -158,6 +157,14 @@ function getData() {
 	        });
 
 	       	currency_formatting(data.currency_code);
+
+	       	if (priceTarget == null) {
+	       		$('.priceTarget').text("No Price Target available");
+	       		var edited_text = $('.priceTarget').text();
+	       		$('.price').text(edited_text);
+	       	} else {
+	        	$('.priceTarget').text(priceTargetFull);	       		
+	       	}
 
 
 	    }

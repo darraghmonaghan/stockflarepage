@@ -1,21 +1,33 @@
 
 
 body {
-	background-color: rgba(240, 240, 240, 1);
+	background-color: rgba(233, 233, 233, 1);
 }
 
 .panel {
 	border-radius: 0 0 0 0;
+	border-color: rgba(210, 211, 213, 1);
+	background-color: white;
 }
+
+
 
 
 /*************  STOCK INTRO DIV **************/
 
+.divHeader {
+	color: rgba(133, 137, 146, 1);
+}
+
 h2 {
-	color: rgba(156, 173, 196, 1);
+	color: rgba(133, 137, 146, 1);
 }
 
 #ticker {
 	color: rgba(255, 98, 0, 1);
 }
 
+
+.info {
+	color: rgba(133, 137, 146, 1);
+}
