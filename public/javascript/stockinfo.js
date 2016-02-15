@@ -1,26 +1,4 @@
 
-function getChart(ticker) {
-
-    $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
-        // Create the chart
-        $('#container').highcharts('StockChart', {
-
-            rangeSelector : {
-                selected : 1
-            },
-
-            series : [{
-                name : 'Price',
-                data : data,
-                tooltip: {
-                    valueDecimals: 2
-                }
-            }]
-        });
-    });
-
-}
-
 
 function currency_formatting(currency_code) {
 
@@ -174,13 +152,31 @@ function getData() {
 				    		'select': ['price']
 						  },
 				    success: function(result) {
-				    	
 				    	// Preparing array for chart
-				    	var chartArray = [].reverse;
+				    	var chartArray = [];
+				    	var chartArraySorted = [];
+				    	
 				    	result.forEach(function (record) {
 				    		chartArray.push([record.updated_at, record.price]);
 				    	})
 
+				    	for (i = (chartArray.length - 1); i >= 0; i--) {				// -1 needed as the input array contains an "undefined" at last entry
+				    		chartArraySorted.push(chartArray[i]);
+				    	}
+
+				       	// Rendering chart
+				        $('#container').highcharts('StockChart', {
+				            rangeSelector : {
+				                selected : 1
+				            },
+				            series : [{
+				                name : 'Price',
+				                data : chartArraySorted,
+				                tooltip: {
+				                    valueDecimals: 2
+				                }
+				            }]
+				        });  
 
 	        			var currentPrice = result[0].price;
 	        			var previousClose = result[1].price;
@@ -195,21 +191,6 @@ function getData() {
 				       	} else {
 				       		$('#chg').css('color', 'red');
 				       	}
-
-
-				       	// Rendering chart
-				        $('#container').highcharts('StockChart', {
-				            rangeSelector : {
-				                selected : 1
-				            },
-				            series : [{
-				                name : 'Price',
-				                data : chartArray,
-				                tooltip: {
-				                    valueDecimals: 2
-				                }
-				            }]
-				        });   	
 	        		}
 	        });
 
