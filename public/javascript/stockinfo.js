@@ -1,7 +1,28 @@
 
+function getChart(ticker) {
+
+    $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+        // Create the chart
+        $('#container').highcharts('StockChart', {
+
+            rangeSelector : {
+                selected : 1
+            },
+
+            series : [{
+                name : 'Price',
+                data : data,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+        });
+    });
+
+}
+
 
 function currency_formatting(currency_code) {
-
 
 		var currency_symbols = {
 		    'usd': '$', // US Dollar
@@ -32,7 +53,7 @@ function getData() {
 	    type: 'PUT',
 	    data: { "conditions": {ticker: tickerParam }, 'select': '_all'},
 	    success: function(result) {
-	        console.log(result)
+	        // console.log(result)
 	        var data = result[0];
 
 
@@ -145,9 +166,6 @@ function getData() {
 	       	$('#ROE').text(ROE + "%");
 
 
-
-
-
 			$.ajax({
 				    url: 'https://dozlacmd51.execute-api.us-east-1.amazonaws.com/v1/historical',
 				    type: 'PUT',
@@ -156,7 +174,14 @@ function getData() {
 				    		'select': ['price']
 						  },
 				    success: function(result) {
-				    	console.log(result);
+				    	
+				    	// Preparing array for chart
+				    	var chartArray = [].reverse;
+				    	result.forEach(function (record) {
+				    		chartArray.push([record.updated_at, record.price]);
+				    	})
+
+
 	        			var currentPrice = result[0].price;
 	        			var previousClose = result[1].price;
 	        			var dollarChange = (previousClose - currentPrice).toFixed(2);
@@ -165,12 +190,26 @@ function getData() {
 	        		
 	        			$('#chg').text(chg);
 
-
 				       	if (dollarChange > 0) {
 				       		$('#chg').css('color', 'green');
 				       	} else {
 				       		$('#chg').css('color', 'red');
 				       	}
+
+
+				       	// Rendering chart
+				        $('#container').highcharts('StockChart', {
+				            rangeSelector : {
+				                selected : 1
+				            },
+				            series : [{
+				                name : 'Price',
+				                data : chartArray,
+				                tooltip: {
+				                    valueDecimals: 2
+				                }
+				            }]
+				        });   	
 	        		}
 	        });
 
@@ -183,11 +222,11 @@ function getData() {
 	       	} else {
 	        	$('.priceTarget').text(priceTargetFull);	       		
 	       	}
-
-
 	    }
 	});
 }
+
+
 
 
 
