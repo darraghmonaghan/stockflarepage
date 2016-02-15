@@ -109,7 +109,7 @@ function getData() {
 	        var eps = data.eps;
 	        var peRatio = data.pe_ratio;
 	       	var reccomendation = data.reccomendation_text;
-	       	var div_yield = ((dps / price) * 100);
+	       	var div_yield = ((dps / price) * 100).toFixed(2);
 
 	        $('#dps').text(dps + ' dividend paid per share ' + '(' + div_yield + '% yield)');
 	        $('#eps').text(eps + ' per share');
@@ -120,10 +120,10 @@ function getData() {
 	        var summary = data.financial_summary;
 	        var marketcap = data.market_value;
 	        var fiftytwo_high = data.fifty_two_week_high;
-	        var fiftytwo_upside = ((price - fiftytwo_high) / price * 100).toFixed(2);
+	        var fiftytwo_upside = ((fiftytwo_high - price) / price * 100).toFixed(2);
 
 	        var fiftytwo_low = data.fifty_two_week_low;
-	        var fiftytwo_downside = ((price - fiftytwo_low) / price * 100).toFixed(2);
+	        var fiftytwo_downside = ((fiftytwo_low - price) / price * 100).toFixed(2);
 
 	        var upside = (((priceTarget - price) / price) * 100).toFixed(2);
 	        var priceTargetFull = (priceTarget + ' (' + upside + "%)");
@@ -139,10 +139,10 @@ function getData() {
 			var priceToBook = data.book_value;
 			var ROE = data.return_on_equity;
 
-	       	$('#grossMargin').text(grossMargin);
+	       	$('#grossMargin').text(grossMargin + '%');
 	       	$('#netMargin').text(netMargin);
 	       	$('#bookValue').text(priceToBook);
-	       	$('#ROE').text(ROE);
+	       	$('#ROE').text(ROE + "%");
 
 
 

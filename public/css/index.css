@@ -6,17 +6,34 @@ body {
 
 .panel {
 	border-radius: 0 0 0 0;
-	border-color: rgba(210, 211, 213, 1);
+	border-color: #07A3EE;
 	background-color: white;
 }
 
+hr {
+	border-color: #07A3EE;
+}
 
+
+/*************  NAVIGATION DIV **************/
+
+.navigation:hover {
+	background-color: #07A3EE;
+}
+
+.navigation h4:hover {
+	color: white;
+}
+
+#name {
+	color: #07A3EE;
+}
 
 
 /*************  STOCK INTRO DIV **************/
 
 .divHeader {
-	color: rgba(133, 137, 146, 1);
+	color: #07A3EE;
 }
 
 h2 {
@@ -24,10 +41,17 @@ h2 {
 }
 
 #ticker {
-	color: rgba(255, 98, 0, 1);
+	color: rgba(133, 137, 146, 1);
 }
 
 
 .info {
 	color: rgba(133, 137, 146, 1);
 }
+
+/*************  STOCKFLARE METRICS **************/
+
+.tableDiv {
+	color: rgba(133, 137, 146, 1);
+}
+
