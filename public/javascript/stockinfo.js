@@ -118,17 +118,35 @@ function getData() {
 
 	        // Key Performance Metrics
 	        var summary = data.financial_summary;
-	        var marketcap = data.enterprise_value;
+	        var marketcap = data.market_value;
 	        var fiftytwo_high = data.fifty_two_week_high;
+	        var fiftytwo_upside = ((price - fiftytwo_high) / price * 100).toFixed(2);
+
 	        var fiftytwo_low = data.fifty_two_week_low;
+	        var fiftytwo_downside = ((price - fiftytwo_low) / price * 100).toFixed(2);
+
 	        var upside = (((priceTarget - price) / price) * 100).toFixed(2);
 	        var priceTargetFull = (priceTarget + ' (' + upside + "%)");
 
-	       	$('#52high').text(fiftytwo_high);
-	       	$('#52low').text(fiftytwo_low);
+	       	$('#52high').text(fiftytwo_high + ' (' + fiftytwo_upside + '%)');
+	       	$('#52low').text(fiftytwo_low + ' (' + fiftytwo_downside + '%)');
 	       	$('#marketcap').text(marketcap);
 	       	$('#analysis').text(summary);
 	        
+
+			var grossMargin = data.gross_margin;
+			var netMargin = 0;
+			var priceToBook = data.book_value;
+			var ROE = data.return_on_equity;
+
+	       	$('#grossMargin').text(grossMargin);
+	       	$('#netMargin').text(netMargin);
+	       	$('#bookValue').text(priceToBook);
+	       	$('#ROE').text(ROE);
+
+
+
+
 
 			$.ajax({
 				    url: 'https://dozlacmd51.execute-api.us-east-1.amazonaws.com/v1/historical',
@@ -159,7 +177,7 @@ function getData() {
 	       	currency_formatting(data.currency_code);
 
 	       	if (priceTarget == null) {
-	       		$('.priceTarget').text("No Price Target available");
+	       		$('.priceTarget').text("No Price Target Available");
 	       		var edited_text = $('.priceTarget').text();
 	       		$('.price').text(edited_text);
 	       	} else {

@@ -43,6 +43,41 @@
 
         </div>  <!-- ROW -->
 
+
+
+        <div class='row'>
+
+            <!-- navigation div -->
+            <div class='col-md-12'>
+                <div id='header' class='panel panel-default col-xs-12 col-sm-12 col-md-12'>
+                    <a href='#5metrics'>
+                        <div class='col-xs-12 col-sm-3'>
+                            <h4 class='text-center info'>Stockflare Metrics</h4>
+                        </div>
+                    </a>
+                    <a href='#performanceMetrics'>
+                        <div class='col-xs-12 col-sm-3'>
+                            <h4 class='text-center info'>Performance Metrics</h4>
+                        </div>
+                    </a>
+                    <a href='#advancedMetrics'>
+                        <div class='col-xs-12 col-sm-3'>
+                            <h4 class='text-center info'>Advanced Metrics</h4>
+                        </div>
+                    </a>
+                    <a href='#chart'>
+                        <div class='col-xs-12 col-sm-3'>
+                            <h4 class='text-center info'>Performance Chart</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>  <!-- ROW -->
+
+
+
+
         <div class='row'>
 
             <!-- 5 Metrics Div -->
@@ -53,23 +88,23 @@
                             <div class='panel panel-default'>
                                 <table class='table'>
                                   <tr>
-                                    <td id='metric1' class='5metrics'><h5 class='text-center'>Growth?</h5></td>
+                                    <td id='metric1' class='5metrics'><h5 class='text-center'>Growth</h5></td>
                                     <td><h5 id='info growth'></h5></td>
                                   </tr>
                                   <tr>
-                                    <td id='metric2' class='5metrics'><h5 class='text-center'>Dividends?</h5></td>
+                                    <td id='metric2' class='5metrics'><h5 class='text-center'>Dividends</h5></td>
                                     <td><h5 id='dps' class='info currencySymbol'></h3></td>
                                   </tr>
                                   <tr>
-                                    <td id='metric3' class='5metrics'><h5 class='text-center'>Price Target?</h5></td>
+                                    <td id='metric3' class='5metrics'><h5 class='text-center'>Price Target</h5></td>
                                     <td><h5 class='info priceTarget currencySymbol'></h5></td>
                                   </tr>
                                   <tr>
-                                    <td id='metric4' class='5metrics'><h5 class='text-center'>Profitability?</h5></td>
+                                    <td id='metric4' class='5metrics'><h5 class='text-center'>Profitability</h5></td>
                                     <td><h5 id='eps' class='info currencySymbol'></h5></td>
                                   </tr>
                                   <tr>
-                                    <td id='metric5' class='5metrics'><h5 class='text-center'>Value?</h5></td>
+                                    <td id='metric5' class='5metrics'><h5 class='text-center'>Value</h5></td>
                                     <td><h5 id='peRatio' class='info'></h5></td>
                                   </tr>
                                 </table>
@@ -80,7 +115,7 @@
 
 
             <div class='col-md-6'>
-                <div id='intermediateInvestor' class='panel panel-default col-xs-12 col-sm-12 col-md-12'>
+                <div id='performanceMetrics' class='panel panel-default col-xs-12 col-sm-12 col-md-12'>
                     <div class='col-xs-12 col-sm-12'>
                         <h4 class='divHeader'>Performance Metrics:</h4>
                         <h5 class='info'>Market Cap: <div class='info pull-right currencySymbol' id='marketcap'></div></h5>
@@ -101,11 +136,24 @@
                 <div id='advancedMetrics' class='panel panel-default col-xs-12 col-sm-12 col-md-12'>
                     <div class='col-xs-12 col-sm-12'>
                         <h4 class='divHeader'>Advanced Metrics:</h4>
+                            <h5 class='info'>Gross Margin: <div class='info pull-right currencySymbol' id='grossMargin'></div></h5>
+                            <h5 class='info'>Nett Margin: <div class='info pull-right currencySymbol' id='netMargin'></div></h5>
+                            <h5 class='info'>Price to Book Value: <div class='info pull-right currencySymbol' id='bookValue'></div></h5>
+                            <h5 class='info'>Return on Equity: <div class='info pull-right currencySymbol' id='ROE'></div></h5>
                     </div>
                 </div>
             </div>
 
-        </div>
+            <div class='col-md-6'>
+                <div id='chart' class='panel panel-default col-xs-12 col-sm-12 col-md-12'>
+                    <div class='col-xs-12 col-sm-12'>
+                        <h4 class='divHeader'>Performance Chart:</h4>
+                    </div>
+                </div>
+            </div>
+
+
+        </div><!-- ROW -->
 
 
 
