@@ -1,7 +1,7 @@
 
 
 body {
-	background-color: rgba(233, 233, 233, 1);
+	background-color: rgba(250, 250, 250, 1);
 }
 
 .panel {
@@ -50,8 +50,4 @@ h2 {
 }
 
 /*************  STOCKFLARE METRICS **************/
-
-.tableDiv {
-	color: rgba(133, 137, 146, 1);
-}
 

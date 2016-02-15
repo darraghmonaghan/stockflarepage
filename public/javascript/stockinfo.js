@@ -135,12 +135,12 @@ function getData() {
 	        
 
 			var grossMargin = data.gross_margin;
-			var netMargin = 0;
+			var netMargin = ((data.net_profit / data.latest_sales) * 100).toFixed(2);
 			var priceToBook = data.book_value;
 			var ROE = data.return_on_equity;
 
 	       	$('#grossMargin').text(grossMargin + '%');
-	       	$('#netMargin').text(netMargin);
+	       	$('#netMargin').text(netMargin + '%');
 	       	$('#bookValue').text(priceToBook);
 	       	$('#ROE').text(ROE + "%");
 
