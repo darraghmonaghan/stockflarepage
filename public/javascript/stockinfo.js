@@ -109,7 +109,10 @@ function getData() {
 	    type: 'PUT',
 	    data: { "conditions": {ticker: tickerParam }, 'select': '_all'},
 	    success: function(result) {
-	        console.log(result);
+	        if (result[0] === undefined || null) {
+	        	window.location.replace("/search")
+	        }
+
 	        var data = result[0];
 
 	        ////////////////   Header Info  ////////////////
@@ -220,6 +223,9 @@ function getData() {
 	       	currency_formatting(data.currency_code);
 
 	    }
+	    // error: function() { 
+	    //    	window.location.replace("/search")
+	    // } 
 	});
 }
 
