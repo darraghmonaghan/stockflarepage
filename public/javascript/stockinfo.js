@@ -31,6 +31,27 @@ function validPriceTarget(priceTarget, priceTargetFull, price) {
 }
 
 
+function peerGrowth(name, company, peers) {
+	var string = name + ' forecast to grow at ' + company + '%, industry peers forecast to grow at ' + peers + '%.';
+	$('#growth').text(string);
+}
+
+
+
+function getNews(companyName) {
+	var APIkey = "59b82ffe7b7cf50d426c7759d87540d0:9:74425325";
+	$.ajax({
+		url: "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + companyName + "&api-key=" + APIkey,
+		success: function(result) {
+			console.log('news articles here');
+			console.log(result);
+	    }
+	});
+}
+
+
+
+
 function dailyChangeFormatting(change) {
 
 	if (change > 0) {
@@ -88,6 +109,7 @@ function getData() {
 	    type: 'PUT',
 	    data: { "conditions": {ticker: tickerParam }, 'select': '_all'},
 	    success: function(result) {
+	        console.log(result);
 	        var data = result[0];
 
 	        ////////////////   Header Info  ////////////////
@@ -103,6 +125,9 @@ function getData() {
 	        $("#readMore").attr('href', webpage);
 	        $('#description').text(description);
 
+
+	        // getNews(name);
+
 	        ////////////////////   5 metrics Dashboard Div  //////////////////  
 	        ////////////////////   part A - Boolean values  //////////////////  
 	        var dividends = data.dividends;
@@ -117,10 +142,13 @@ function getData() {
 	        var peRatio = data.pe_ratio;
 	       	var reccomendation = data.reccomendation_text;
 	       	var div_yield = ((dps / price) * 100).toFixed(2);
+	        var longTermGrowth = data.long_term_growth;
+	        var peerLongTermGrowth = data.peer_average_long_term_growth;
+
 	        $('#dps').text(dps + ' dividend paid per share ' + '(' + div_yield + '% yield)');
 	        $('#eps').text(eps + ' per share');
 	       	$('#peRatio').text('Current PE Ratio of ' + peRatio);
-
+	       	peerGrowth(name, longTermGrowth, peerLongTermGrowth);
 
 	       	////////////////  Passing Data to 5 Metrics dashboard Function //////////////
 			fiveMetrics('dividends', dividends);															// color coding the 5 metrics div
