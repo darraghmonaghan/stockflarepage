@@ -16,50 +16,43 @@ function renderChart(rawData) {						// Rendering chart
 	});  
 }
 
+function validPriceTarget(priceTarget, priceTargetFull, price) {
 
-function fiveMetrics(dividends, growing, profitable, cheaper, priceTarget, price) {
+		if (priceTarget == null) {
+	       		$('.priceTarget').text("No Price Target Available");
+	   	} else {
+	        	$('.priceTarget').text(priceTargetFull);
+	        	if (priceTarget >= price) {
+	        		$('#priceTarget2').addClass("green");
+	        	} else {
+	        		$('#priceTarget2').addClass("red");
+	        	}
+     	}
+}
 
-	       	var positiveColor = 'rgba(9, 187, 0, 1)';
-	       	var negativeColor = 'rgba(250, 0, 24, 1)';
 
-	       	if (dividends === true) {
-	       		$('#metric2').css('background-color', positiveColor);
-	       		$('#metric2').css('color', 'white');
+function dailyChangeFormatting(change) {
+
+	if (change > 0) {
+		$('#chg').addClass("green")
+	} else {
+	    $('#chg').addClass("red");
+	}
+}
+
+
+function fiveMetrics(input, boolean) {						// color formatting the 5 metric dashboard accordingly
+
+	       	var positiveColor = 'rgba(9, 187, 0, 1)';		// variables passed for CSS styling
+	       	var negativeColor = 'rgba(250, 0, 24, 1)';		
+	       	var selector = '#' + input;						// concatenation for jQuery selectors
+
+	       	if (boolean === true) {
+	       		$(selector).css('background-color', positiveColor);
+	       		$(selector).css('color', 'white');
 	       	} else {
-	       		$('#metric2').css('background-color', 'red');
-	       		$('#metric2').css('color', 'white');
-	       	}
-
-	       	if (growing === true) {
-	       		$('#metric1').css('background-color', positiveColor);
-	       		$('#metric1').css('color', 'white');
-	       	} else {
-	       		$('#metric1').css('background-color', 'red');
-	       		$('#metric1').css('color', 'white');
-	       	}
-
-	       	if (profitable === true) {
-	       		$('#metric4').css('background-color', positiveColor);
-	       		$('#metric4').css('color', 'white');
-	       	} else {
-	       		$('#metric4').css('background-color', 'red');
-	       		$('#metric4').css('color', 'white');
-	       	}
-
-	       	if (cheaper === true) {
-	       		$('#metric5').css('background-color', positiveColor);
-	       		$('#metric5').css('color', 'white');
-	       	} else {
-	       		$('#metric5').css('background-color', 'red');
-	       		$('#metric5').css('color', 'white');
-	       	}
-
-	       	if (priceTarget > price) {
-	       		$('#metric3').css('background-color', positiveColor);
-	       		$('#metric3').css('color', 'white');
-	       	} else {
-	       		$('#metric3').css('background-color', 'red');
-	       		$('#metric3').css('color', 'white');
+	       		$(selector).css('background-color', negativeColor);
+	       		$(selector).css('color', 'white');
 	       	}
 }
 
@@ -79,7 +72,7 @@ function currency_formatting(currency_code) {
 		    'vnd': '₫', // Vietnamese Dong
 		};
 
-	if (currency_symbols[currency_code]!==undefined) {
+	if (currency_symbols[currency_code] !== undefined) {
 	    var symbol = (currency_symbols[currency_code]);
 	    $('.currencySymbol').prepend(symbol);
 	}
@@ -118,7 +111,7 @@ function getData() {
 	       	var cheaper = data.cheaper;
 	       	var priceTarget = data.target_price;
 
-	       	////////////////////   part B - String & Integer Values  /////////
+	       	/////////////////////   part B - String & Integer Values  /////////
 	        var dps = data.dps;
 	        var eps = data.eps;
 	        var peRatio = data.pe_ratio;
@@ -130,7 +123,15 @@ function getData() {
 
 
 	       	////////////////  Passing Data to 5 Metrics dashboard Function //////////////
-			fiveMetrics(dividends, growing, profitable, cheaper, priceTarget, price);		// color coding the 5 metrics div
+			fiveMetrics('dividends', dividends);															// color coding the 5 metrics div
+			fiveMetrics('growing', growing);
+			fiveMetrics('profitable', profitable);
+			fiveMetrics('cheaper', cheaper);
+			if (priceTarget >= price) {
+				fiveMetrics('priceTarget', true);
+			} else {
+				fiveMetrics('priceTarget', false);
+			}
 
 
 	        /////////////////// Key Performance Metrics /////////////////
@@ -179,29 +180,17 @@ function getData() {
 
 	        			var currentPrice = result[0].price;
 	        			var previousClose = result[1].price;
-	        			var dollarChange = (previousClose - currentPrice).toFixed(2);
-	        			var percentageChange = ((dollarChange / previousClose) * 100).toFixed(2);
-	        			var chg = (dollarChange + " (" + percentageChange + '%)');
-	        		
+	        			var priceChange = (previousClose - currentPrice).toFixed(2);
+	        			var percentageChange = ((priceChange / previousClose) * 100).toFixed(2);
+	        			var chg = (priceChange + " (" + percentageChange + '%)');
 	        			$('#chg').text(chg);
-
-				       	if (dollarChange > 0) {
-				       		$('#chg').css('color', 'green');
-				       	} else {
-				       		$('#chg').css('color', 'red');
-				       	}
+	        			dailyChangeFormatting(priceChange);
 	        		}
 	        });
 
+	       	validPriceTarget(priceTarget, priceTargetFull, price);
 	       	currency_formatting(data.currency_code);
 
-	       	if (priceTarget == null) {
-	       		$('.priceTarget').text("No Price Target Available");
-	       		var edited_text = $('.priceTarget').text();
-	       		$('.price').text(edited_text);
-	       	} else {
-	        	$('.priceTarget').text(priceTargetFull);	       		
-	       	}
 	    }
 	});
 }
