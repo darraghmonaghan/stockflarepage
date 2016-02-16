@@ -1,5 +1,22 @@
 
 
+function renderChart(rawData) {						// Rendering chart
+
+	$('#container').highcharts('StockChart', {
+		rangeSelector : {
+			selected : 1
+		},
+		series : [{
+			name : 'Price',
+			data : rawData,
+			tooltip: {
+				valueDecimals: 2
+			}
+		}]
+	});  
+}
+
+
 function currency_formatting(currency_code) {
 
 		var currency_symbols = {
@@ -153,30 +170,19 @@ function getData() {
 						  },
 				    success: function(result) {
 				    	// Preparing array for chart
-				    	var chartArray = [];
-				    	var chartArraySorted = [];
+				    	var chartArray = [];											// collated performance
+				    	var chartArraySorted = [];										// chronologically sorted stock performance
 				    	
 				    	result.forEach(function (record) {
-				    		chartArray.push([record.updated_at, record.price]);
+				    		chartArray.push([(record.updated_at * 1000), record.price]);
 				    	})
 
 				    	for (i = (chartArray.length - 1); i >= 0; i--) {				// -1 needed as the input array contains an "undefined" at last entry
 				    		chartArraySorted.push(chartArray[i]);
 				    	}
 
-				       	// Rendering chart
-				        $('#container').highcharts('StockChart', {
-				            rangeSelector : {
-				                selected : 1
-				            },
-				            series : [{
-				                name : 'Price',
-				                data : chartArraySorted,
-				                tooltip: {
-				                    valueDecimals: 2
-				                }
-				            }]
-				        });  
+				    	renderChart(chartArraySorted);
+
 
 	        			var currentPrice = result[0].price;
 	        			var previousClose = result[1].price;

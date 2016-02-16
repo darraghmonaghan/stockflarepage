@@ -18,9 +18,6 @@
         <link rel="stylesheet" type="text/css" href="/static/css/index.css">
 
 
-
-
-
     </head>
     <body>
     <div class='container'>
@@ -54,28 +51,27 @@
             <div class='col-md-12'>
                 <div id='header' class='panel panel-default col-xs-12 col-sm-12 col-md-12'>
                     <a href='#5metrics'>
-                        <div class='navigation col-xs-12 col-sm-3'>
-                            <h4 class='text-center info'>Stockflare Metrics</h4>
+                        <div class='navigation col-xs-12 col-sm-6 col-md-3'>
+                            <h5 class='text-center info'>Stockflare Metrics</h5>
                         </div>
                     </a>
                     <a href='#performanceMetrics'>
-                        <div class='navigation col-xs-12 col-sm-3'>
-                            <h4 class='text-center info'>Performance Metrics</h4>
+                        <div class='navigation col-xs-12 col-sm-6 col-md-3'>
+                            <h5 class='text-center info'>Performance Metrics</h5>
                         </div>
                     </a>
                     <a href='#advancedMetrics'>
-                        <div class='navigation col-xs-12 col-sm-3'>
-                            <h4 class='text-center info'>Advanced Metrics</h4>
+                        <div class='navigation col-xs-12 col-sm-6 col-md-3'>
+                            <h5 class='text-center info'>Advanced Metrics</h5>
                         </div>
                     </a>
                     <a href='#chart'>
-                        <div class='navigation col-xs-12 col-sm-3'>
-                            <h4 class='text-center info'>Performance Chart</h4>
+                        <div class='navigation col-xs-12 col-sm-6 col-md-3'>
+                            <h5 class='text-center info'>Performance Chart</h5>
                         </div>
                     </a>
                 </div>
             </div>
-
         </div>  <!-- ROW -->
 
 
@@ -116,7 +112,23 @@
                 </div>
             </div>
 
+            <!-- Chart Div -->
+            <div class='col-md-6'>
+                <div id='chart' class='panel panel-default col-xs-12 col-sm-12 col-md-12'>
+                    <div class='col-xs-12 col-sm-12'>
+                        <h4 class='divHeader'>Performance Chart:</h4>
 
+                            <div id="container" style="height: 400px; min-width: 310px"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class='row'>
+
+            <!-- Performance Div -->
             <div class='col-md-6'>
                 <div id='performanceMetrics' class='panel panel-default col-xs-12 col-sm-12 col-md-12'>
                     <div class='col-xs-12 col-sm-12'>
@@ -132,9 +144,8 @@
                 </div>
             </div>
     
-        </div>
-        <div class='row'>
 
+            <!-- Advanced Metrics Div -->
             <div class='col-md-6'>
                 <div id='advancedMetrics' class='panel panel-default col-xs-12 col-sm-12 col-md-12'>
                     <div class='col-xs-12 col-sm-12'>
@@ -146,24 +157,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class='col-md-6'>
-                <div id='chart' class='panel panel-default col-xs-12 col-sm-12 col-md-12'>
-                    <div class='col-xs-12 col-sm-12'>
-                        <h4 class='divHeader'>Performance Chart:</h4>
-
-                            <div id="container" style="height: 400px; min-width: 310px"></div>
-
-                    </div>
-                </div>
-            </div>
-
-
         </div><!-- ROW -->
-
-
-
-
 
     </div> <!-- For the container -->
     </body>
