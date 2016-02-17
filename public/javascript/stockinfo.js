@@ -38,16 +38,16 @@ function peerGrowth(name, company, peers) {
 
 
 
-function getNews(companyName) {
-	var APIkey = "59b82ffe7b7cf50d426c7759d87540d0:9:74425325";
-	$.ajax({
-		url: "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + companyName + "&api-key=" + APIkey,
-		success: function(result) {
-			console.log('news articles here');
-			console.log(result);
-	    }
-	});
-}
+// function getNews(companyName) {
+// 	var APIkey = "59b82ffe7b7cf50d426c7759d87540d0:9:74425325";
+// 	$.ajax({
+// 		url: "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + companyName + "&api-key=" + APIkey,
+// 		success: function(result) {
+// 			console.log('news articles here');
+// 			console.log(result);
+// 	    }
+// 	});
+// }
 
 
 
@@ -109,6 +109,7 @@ function getData() {
 	    type: 'PUT',
 	    data: { "conditions": {ticker: tickerParam }, 'select': '_all'},
 	    success: function(result) {
+	        console.log(result);
 	        if (result[0] === undefined || null) {
 	        	window.location.replace("/search")
 	        }
@@ -167,7 +168,7 @@ function getData() {
 
 	        /////////////////// Key Performance Metrics /////////////////
 	        var summary = data.financial_summary;
-	        var marketcap = data.market_value;
+	        var marketcap = (data.market_value_usd / 1000).toFixed(2);
 	        var fiftytwo_high = data.fifty_two_week_high;
 	        var fiftytwo_upside = ((fiftytwo_high - price) / price * 100).toFixed(2);
 	        var fiftytwo_low = data.fifty_two_week_low;
@@ -176,7 +177,7 @@ function getData() {
 	        var priceTargetFull = (priceTarget + ' (' + upside + "%)");
 	       	$('#52high').text(fiftytwo_high + ' (' + fiftytwo_upside + '%)');
 	       	$('#52low').text(fiftytwo_low + ' (' + fiftytwo_downside + '%)');
-	       	$('#marketcap').text(marketcap);
+	       	$('#marketcap').text(marketcap + ' Billion');
 	       	$('#analysis').text(summary);
 	        
 
@@ -223,9 +224,6 @@ function getData() {
 	       	currency_formatting(data.currency_code);
 
 	    }
-	    // error: function() { 
-	    //    	window.location.replace("/search")
-	    // } 
 	});
 }
 

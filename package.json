@@ -1,7 +1,33 @@
 {
   "dependencies": {
     "body-parser": "^1.15.0",
+    "chai": "^3.5.0",
     "chart.js": "^1.0.2",
-    "express": "^4.13.4"
-  }
+    "express": "^4.13.4",
+    "jquery": "^2.2.0",
+    "mocha": "^2.4.5",
+    "mocha-phantomjs": "^4.0.2",
+    "request": "^2.69.0"
+  },
+  "name": "stockflare",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darraghmonaghan/stockflarepage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darraghmonaghan/stockflarepage/issues"
+  },
+  "homepage": "https://github.com/darraghmonaghan/stockflarepage#readme",
+  "description": ""
 }
