@@ -35,9 +35,9 @@ function validPriceTarget(priceTarget, priceTargetFull, price) {
 
 
 function peerGrowth(name, growthRate, peers) {
-	if (name || growthRate || peers === undefined || null) {
-		var = 'Detailed information on company growth not available.';
-		$('#growth').text(string);
+	if (name === null || growthRate === null || peers === null) {
+		var notAvailable = 'Detailed information on company growth not available.';
+		$('#growth').text(notAvailable);
 		return 1;		
 	} else {
 		var string = name + ' forecast to grow at ' + growthRate + '%, industry peers forecast to grow at ' + peers + '%.';
@@ -45,20 +45,6 @@ function peerGrowth(name, growthRate, peers) {
 		return 2
 	}
 }
-
-
-
-// function getNews(companyName) {
-// 	var APIkey = "59b82ffe7b7cf50d426c7759d87540d0:9:74425325";
-// 	$.ajax({
-// 		url: "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + companyName + "&api-key=" + APIkey,
-// 		success: function(result) {
-// 			console.log('news articles here');
-// 			console.log(result);
-// 	    }
-// 	});
-// }
-
 
 
 
@@ -120,7 +106,6 @@ function getData() {
 	    type: 'PUT',
 	    data: { "conditions": {ticker: tickerParam }, 'select': '_all'},
 	    success: function(result) {
-	        console.log(result);
 	        if (result[0] === undefined || null) {
 	        	window.location.replace("/search")
 	        }
@@ -140,8 +125,6 @@ function getData() {
 	        $("#readMore").attr('href', webpage);
 	        $('#description').text(description);
 
-
-	        // getNews(name);
 
 	        ////////////////////   5 metrics Dashboard Div  //////////////////  
 	        ////////////////////   part A - Boolean values  //////////////////  
@@ -193,9 +176,9 @@ function getData() {
 	        
 
 	        ////////////////////// Advanced Metrics  ///////////////////////
-			var grossMargin = data.gross_margin;
-			var netMargin = ((data.net_profit / data.latest_sales) * 100).toFixed(2);
-			var priceToBook = data.book_value;
+			var grossMargin = (data.gross_margin !== null ? data.gross_margin : 'Not Available');
+			var netMargin = (data.net_profile !== null ? ((data.net_profit / data.latest_sales) * 100).toFixed(2) : 'Not Available');
+			var priceToBook = (data.book_value !== null ? data.book_value : 'Not Available');
 			var ROE = data.return_on_equity;
 	       	$('#grossMargin').text(grossMargin + '%');
 	       	$('#netMargin').text(netMargin + '%');
