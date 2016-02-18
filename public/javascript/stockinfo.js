@@ -20,20 +20,30 @@ function validPriceTarget(priceTarget, priceTargetFull, price) {
 
 		if (priceTarget == null) {
 	       		$('.priceTarget').text("No Price Target Available");
+	       		return 1;
 	   	} else {
 	        	$('.priceTarget').text(priceTargetFull);
 	        	if (priceTarget >= price) {
 	        		$('#priceTarget2').addClass("green");
+	        		return 2;
 	        	} else {
 	        		$('#priceTarget2').addClass("red");
+	        		return 3;
 	        	}
      	}
 }
 
 
-function peerGrowth(name, company, peers) {
-	var string = name + ' forecast to grow at ' + company + '%, industry peers forecast to grow at ' + peers + '%.';
-	$('#growth').text(string);
+function peerGrowth(name, growthRate, peers) {
+	if (name || growthRate || peers === undefined || null) {
+		var = 'Detailed information on company growth not available.';
+		$('#growth').text(string);
+		return 1;		
+	} else {
+		var string = name + ' forecast to grow at ' + growthRate + '%, industry peers forecast to grow at ' + peers + '%.';
+		$('#growth').text(string);
+		return 2
+	}
 }
 
 
@@ -97,6 +107,7 @@ function currency_formatting(currency_code) {
 	    var symbol = (currency_symbols[currency_code]);
 	    $('.currencySymbol').prepend(symbol);
 	}
+	return symbol;
 }
 
 
