@@ -1,6 +1,6 @@
 
 #search {
-	padding-top: 40%;
+	padding-top: 20%;
 	text-align: center;
 }
 
@@ -25,14 +25,6 @@
 .form-control {
 	border-color: #07A3EE;
 }
-
-/*#img {
-	height: 100%;
-	width: auto;
-	background-size: cover;
-  	background-repeat: no-repeat;
-	background-image: url('../images/logo.png');
-}*/
 
 
 #img {
